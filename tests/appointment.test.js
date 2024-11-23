@@ -1,5 +1,5 @@
 const request = require("supertest");
-const app = require("..");
+const app = require("../test-index");
 
 let server;
 beforeAll(() => {

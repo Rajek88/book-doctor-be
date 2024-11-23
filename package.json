@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js --trace-warnings",
+    "start": "node --trace-warnings server.js",
     "test": "jest tests/appointment.test.js"
   },
   "author": "Rajendra Kulkarni",

@@ -1,10 +1,5 @@
-const app = require(".");
-
 try {
-  const PORT = 3000;
-  app.listen(PORT, () =>
-    console.log(`Server running on http://localhost:${PORT}`)
-  );
+  require("./index");
 } catch (error) {
   console.log({ error });
 }
