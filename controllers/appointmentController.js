@@ -1,6 +1,9 @@
+// as using database was not asked in the assignment, hence using the array
+// and I am also attempting to host it on vercel
 const appointments = [];
 const doctors = ["Dr. Smith", "Dr. Jones", "Dr. Taylor"];
 
+// to book appointment
 exports.bookAppointment = (req, res) => {
   const { firstName, lastName, email, timeSlot, doctorName } = req.body;
 
@@ -28,6 +31,7 @@ exports.bookAppointment = (req, res) => {
     .json({ message: "Appointment booked successfully!", appointment });
 };
 
+// to get booked appointment
 exports.getAppointmentByEmail = (req, res) => {
   const { email } = req.params;
   const allAppointments = appointments.filter((appt) => appt.email === email);
@@ -38,9 +42,10 @@ exports.getAppointmentByEmail = (req, res) => {
       .json({ error: "No appointment found for this email." });
   }
 
-  return res.json(allAppointments);
+  return res.json({ allAppointments });
 };
 
+// to get booked appointments of a doctor
 exports.getAppointmentsByDoctor = (req, res) => {
   const { doctorName } = req.params;
 
@@ -51,9 +56,10 @@ exports.getAppointmentsByDoctor = (req, res) => {
   const doctorAppointments = appointments.filter(
     (appt) => appt.doctorName === doctorName
   );
-  return res.json(doctorAppointments);
+  return res.json({ allAppointments: doctorAppointments });
 };
 
+// cancel a appointment
 exports.cancelAppointment = (req, res) => {
   const { email, timeSlot } = req.body;
   const index = appointments.findIndex(
@@ -68,6 +74,7 @@ exports.cancelAppointment = (req, res) => {
   return res.json({ message: "Appointment cancelled successfully." });
 };
 
+// modify a appointment
 exports.modifyAppointment = (req, res) => {
   const { email, originalTimeSlot, newTimeSlot } = req.body;
 

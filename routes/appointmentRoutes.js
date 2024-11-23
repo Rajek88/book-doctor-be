@@ -9,6 +9,7 @@ const {
 
 const router = express.Router();
 
+// routes
 router.post("/", bookAppointment);
 router.get("/:email", getAppointmentByEmail);
 router.get("/doctor/:doctorName", getAppointmentsByDoctor);
